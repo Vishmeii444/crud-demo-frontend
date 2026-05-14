@@ -1,31 +1,21 @@
+import api from "./api";
 import { Task, TaskDTO } from "../types/task";
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/tasks";
-
 export const getTasks = async (): Promise<Task[]> => {
-  const response = await fetch(API_URL);
-  return response.json();
+  const response = await api.get<Task[]>(""); 
+  return response.data; // axios puts the response body in the .data property
 };
 
 export const createTask = async (task: TaskDTO): Promise<Task> => {
-  const response = await fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(task),
-  });
-  return response.json();
+  const response = await api.post<Task>("", task);
+  return response.data;
 };
 
 export const updateTask = async (id: number, task: TaskDTO): Promise<Task> => {
-  const response = await fetch(`${API_URL}/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(task),
-  });
-  return response.json();
+  const response = await api.put<Task>(`/${id}`, task);
+  return response.data;
 };
 
 export const deleteTask = async (id: number): Promise<void> => {
-  await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+  await api.delete(`/${id}`);
 };

@@ -48,7 +48,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#EEEEEE] flex flex-col items-center py-16 px-4">
+    <main className="min-h-screen bg-[#F6F4E8] flex flex-col items-center py-16 px-4">
       <div className="w-full max-w-2xl">
         <header className="mb-12">
           <h1 className="text-6xl font-black text-[#BD114A] tracking-tighter italic text-center">
@@ -67,7 +67,7 @@ export default function HomePage() {
           />
           <button
             type="submit"
-            className="bg-[#FAE251] text-[#BD114A] px-10 rounded-lg font-black text-xl shadow-[6px_6px_0px_#BD114A] hover:-translate-y-1 active:translate-y-1 active:shadow-none transition-all"
+            className="bg-[#FAE251] text-[#BD114A] px-10 rounded-lg font-black text-xl shadow-[6px_6px_0px_#BD114A] hover:-translate-y-1 hover:text-white active:translate-y-1 active:shadow-none transition-all"
           >
             ADD
           </button>
