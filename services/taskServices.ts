@@ -1,6 +1,6 @@
 import { Task, TaskDTO } from "../types/task";
 
-const API_URL = "http://localhost:8080/tasks";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080/tasks";
 
 export const getTasks = async (): Promise<Task[]> => {
   const response = await fetch(API_URL);
