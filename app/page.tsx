@@ -9,11 +9,17 @@ export default function HomePage() {
   const [input, setInput] = useState("");
 
   const fetchAll = async () => {
-    const data = await api.getTasks();
-    setTasks(data);
+    try {
+      const data = await api.getTasks();
+      setTasks(data);
+    } catch (err) {
+      console.error("Failed to fetch tasks:", err);
+    }
   };
 
-  useEffect(() => { fetchAll(); }, []);
+  useEffect(() => {
+    fetchAll();
+  }, []);
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,9 +29,17 @@ export default function HomePage() {
     fetchAll();
   };
 
-  const handleUpdate = async (id: number, newDesc: string) => {
-    await api.updateTask(id, { description: newDesc, status: "Updated" });
-    fetchAll();
+  const handleUpdate = async (
+    id: number,
+    newDesc: string,
+    newStatus: string,
+  ) => {
+    try {
+      await api.updateTask(id, { description: newDesc, status: newStatus });
+      fetchAll();
+    } catch (err) {
+      console.error("Update failed.", err);
+    }
   };
 
   const handleDelete = async (id: number) => {
@@ -46,7 +60,7 @@ export default function HomePage() {
         {/* Input Section */}
         <form onSubmit={handleCreate} className="flex gap-4 mb-16">
           <input
-            className="flex-1 p-5 rounded-lg border-4 border-gray-300 focus:border-[#FAE251] outline-none text-xl font-bold placeholder:text-gray-300"
+            className="flex-1 p-5 rounded-lg border-4 border-gray-300 focus:border-[#FAE251] outline-none text-xl font-bold placeholder:text-gray-300 text-black"
             placeholder="Add a new task..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -72,7 +86,9 @@ export default function HomePage() {
             ))
           ) : (
             <div className="text-center py-20 border-4 border-dashed border-gray-300 rounded-xl">
-              <p className="text-gray-400 font-black uppercase tracking-widest">No Active Tasks</p>
+              <p className="text-gray-400 font-black uppercase tracking-widest text-black">
+                No Active Tasks
+              </p>
             </div>
           )}
         </div>
