@@ -38,7 +38,7 @@ export default function HomePage() {
       <div className="w-full max-w-2xl">
         <header className="mb-12">
           <h1 className="text-6xl font-black text-[#BD114A] tracking-tighter italic text-center">
-            TASK_TRACKER
+            TASK TRACKER
           </h1>
           <div className="h-3 w-full bg-[#FAE251] mt-4 shadow-[5px_5px_0px_#BD114A]"></div>
         </header>
