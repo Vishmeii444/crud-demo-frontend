@@ -78,7 +78,7 @@ export default function HomePage() {
               onChange={(e) => setInput(e.target.value)}
             />
             <select
-              className="w-48 p-5 border-4 border-gray-300 focus:border-[#FAE251] rounded-lg outline-none font-bold text-black bg-white cursor-pointer"
+              className="w-48 p-5 border-4 border-gray-300 focus:border-[#FAE251] rounded-lg outline-none font-bold text-black bg-white cursor-pointer text-xl"
               value={addStatus}
               onChange={(e) => setAddStatus(e.target.value)}
             >
